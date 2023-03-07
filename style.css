@@ -1,0 +1,115 @@
+:root{
+    --purple : #8284FA;
+    --purple-dark : #5E60CE;
+    --blue : #4EA8DE;
+    --blue-dark :#1E6F9F;
+    --black : #0D0D0D;
+    --grey-400 : #333333;
+    --white-100 : #F2F2F2;
+    --grey-600 :#1A1A1A;
+    --grey-500 : #262626;
+    --grey-300 : #808080;
+    --danger :#E25858;
+
+}
+@font-face {
+    font-family: inter;
+    src: url("font/Inter-VariableFont_slnt\,wght.ttf");
+}
+*{
+    font-family: inter;
+}
+body{
+    margin: 0%;
+    background-color: var(--grey-600);
+}
+.logo{
+    background-color: var(--black);
+    text-align: center;
+    padding: 40px 0px;
+}
+.list{
+    /* text-align: center; */
+    /* background-color: var(--grey-500); */
+    margin-top: -25px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list>textarea{
+    resize: none;
+    background-color: var(--grey-400);
+    outline: none;
+    color: var(--white-100);
+    font-size: 16px;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 10px;
+}
+#addbtn{
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--blue-dark);
+    color: var(--white-100);
+    border: none;
+    margin-left: 10px;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+#addbtn:hover{
+    background-color: var(--blue);
+}
+.total{
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    /* width: 70%; */
+}
+.task{
+    color: #4EA8DE;
+    font-size: 14px;
+}
+.completed{
+    color: var(--purple);
+    font-size: 14px;
+}
+.total_num{
+    color: var(--white-100);
+    background-color: var(--grey-400);
+    padding: 5px 10px;
+    border-radius: 35%;
+}
+.todo{
+    color: var(--white-100);
+    background-color: var(--grey-500);
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.checkbox{
+    cursor: pointer;
+    
+}
+#deletenode{
+    color: var(--grey-300);
+    cursor: pointer;
+    transition: all 0.5s;
+
+}
+#deletenode:hover{
+    color:var(--danger);
+    background-color: var(--grey-400);
+    border-radius: 5px;
+}
+.hidden{
+    display: none;
+}
+.line {
+    text-decoration: line-through;
+}
