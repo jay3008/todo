@@ -44,24 +44,31 @@ if(fetchdata){
     displaydata(fetchdata);
 }
 document.getElementById('text').addEventListener('keydown',(e)=>{
+    if(e.key!= ""){
+        console.log(e.key);
+        document.getElementById("text").classList.remove('redborder');
+    }
     if(e.key == 'Enter'){
-        text = document.getElementById("text").value;
+        text = document.getElementById("text").value.trim();
         if(text!= ""){
             addnode(text);
             document.getElementById("text").value = "";
         }
         else{
+            document.getElementById("text").classList.add('redborder');
             alert("Please enter something in text..");
+           
         }
     }
 })
 add.addEventListener('click',()=>{
-    text = document.getElementById("text").value;
+    text = document.getElementById("text").value.trim();
     if(text!= ""){
         addnode(text);
         document.getElementById("text").value = "";
     }
     else{
+        document.getElementById("text").classList.add('redborder');
         alert("Please enter something in text..");
     }
 })
