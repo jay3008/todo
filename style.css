@@ -36,7 +36,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-.list>textarea{
+.text{
     resize: none;
     background-color: var(--grey-400);
     outline: none;
@@ -65,6 +65,9 @@ body{
     justify-content: space-around;
     /* align-items: center; */
     /* width: 70%; */
+}
+.todo-list{
+    margin-bottom: 50px;
 }
 .task{
     color: #4EA8DE;
@@ -106,6 +109,15 @@ body{
     color:var(--danger);
     background-color: var(--grey-400);
     border-radius: 5px;
+}
+#editnode{
+    color: #4EA8DE;
+    cursor: pointer;
+    margin-left: 5px;
+}
+#editnode:hover{
+    color: rgb(25, 194, 25);
+    transition: all 0.5s;
 }
 .hidden{
     display: none;
