@@ -128,11 +128,12 @@ editnode = (e) =>{
         if(appendnode[i].id == Number(id)){
             let target = e.parentElement.previousElementSibling; 
             console.log(target);
-            let editdiv = `<div> <input id="edittext" class="text" type="text" value="${appendnode[i].text}"> </div>`;
+            let editdiv = `<div> <input id="edittext" class="text" type="text" value="${appendnode[i].text}" autofocus> </div>`;
             console.log(editdiv);
             info.insertAdjacentHTML('afterbegin',editdiv);
             target.remove();
             let editedtext = document.getElementById("edittext");
+            // editedtext.autofocus;
             editedtext.addEventListener('focusout',()=>{
                 appendnode[i].text = editedtext.value;
                 addintolocal(appendnode);
