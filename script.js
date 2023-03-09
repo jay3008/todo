@@ -35,7 +35,6 @@ let displaydata = (data) =>{
             ${data[i].stat ? `<i id="deletenode" class="fas fa-trash-alt" onclick={deletenode(this)}></i>`:`<i id="deletenode" class="fas fa-trash-alt" onclick={deletenode(this)}></i> <i id="editnode" class="fas fa-edit" onclick={editnode(this)}></i>`}
              </div></div>`;
         todo_list.insertAdjacentHTML('beforeend',div1);
-        
     }
     updatetotal(data.length)
     complete(data);
