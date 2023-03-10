@@ -8,8 +8,8 @@ let appendnode = fetchdata ? fetchdata : [];
 let count = fetchdata ? fetchdata.length+1 : 1;
 
 const updateTotal=(len)=>{
-    totaltask.innerHTML = len - 1;
-    totaltask1.innerHTML = len - 1;
+    totaltask.innerHTML = len;
+    totaltask1.innerHTML = len;
 }
 const complete = (appendnode) =>{
     let count = 0;
@@ -18,7 +18,7 @@ const complete = (appendnode) =>{
             count++;
         }
     }
-    outof.innerHTML = count - 1;
+    outof.innerHTML = count;
 }
 
 let displayData = (data) =>{
