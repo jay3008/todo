@@ -7,9 +7,9 @@ let outof = document.getElementById("outof");
 let appendnode = fetchdata ? fetchdata : [];
 let count = fetchdata ? fetchdata.length+1 : 1;
 
-const updatetotal=(len)=>{
-    totaltask.innerHTML = len;
-    totaltask1.innerHTML = len;
+const updateTotal=(len)=>{
+    totaltask.innerHTML = len - 1;
+    totaltask1.innerHTML = len - 1;
     console.log(totaltask1.innerHTML);
 }
 const complete = (appendnode) =>{
@@ -19,29 +19,29 @@ const complete = (appendnode) =>{
             count++;
         }
     }
-    outof.innerHTML = count;
+    outof.innerHTML = count - 1;
 }
 
-let displaydata = (data) =>{
+let displayData = (data) =>{
     let parent = document.getElementById("todo-list");
     while(parent.firstChild){
         parent.removeChild(parent.firstChild);
     }
-    for(let i = 0 ;i<data.length;i++){
+    for(let i = data.length-1 ;i>0;i--){
         let todo_list = document.getElementById('todo-list');
-        let div1 = `<div class="todo" id="nodeid" data-id=${data[i].id}> <div>
-            ${data[i].stat ? `<input type="checkbox" name="" id="checkbox" class="checkbox"  onclick={checkbox(this)} checked> <span class="line">${data[i].text}</span>` : `<input type="checkbox" name="" id="checkbox" class="checkbox" onclick={checkbox(this)}> <span class="noline">${data[i].text}</span>`}
-            </div> <div>
+        let div1 = `<div class="todo" id="nodeid" data-id=${data[i].id}> <div class="textcontainer">
+            ${data[i].stat ? `<i class="fa fa-check" onclick={checkbox(this)} aria-hidden="true"></i> <span class="line">${data[i].text}</span>` : `<input type="checkbox" name="" id="checkbox" class="checkbox" onclick={checkbox(this)}> <span class="noline">${data[i].text}</span>`}
+            </div> <div class="icons">
             ${data[i].stat ? `<i id="deletenode" class="fas fa-trash-alt" onclick={deletenode(this)}></i>`:`<i id="deletenode" class="fas fa-trash-alt" onclick={deletenode(this)}></i> <i id="editnode" class="fas fa-edit" onclick={editnode(this)}></i>`}
              </div></div>`;
         todo_list.insertAdjacentHTML('beforeend',div1);
     }
-    updatetotal(data.length)
+    updateTotal(data.length)
     complete(data);
 };
 
 if(fetchdata){
-    displaydata(fetchdata);
+    displayData(fetchdata);
 }
 document.getElementById('text').addEventListener('keydown',(e)=>{
     if(e.key!= ""){
@@ -49,13 +49,13 @@ document.getElementById('text').addEventListener('keydown',(e)=>{
         document.getElementById("text").classList.remove('redborder');
     }
     if(e.key == 'Enter'){
-       checktxt();
+       checkTxt();
     }
 })
 add.addEventListener('click',()=>{
-   checktxt();
+   checkTxt();
 })
-const checktxt= () =>{
+const checkTxt= () =>{
     text = document.getElementById("text").value.trim();
     if(text!= ""){
         addnode(text);
@@ -63,8 +63,10 @@ const checktxt= () =>{
     }
     else{
         document.getElementById("text").classList.add('redborder');
+        document.getElementById("text").value = text.trim();
         alert("Please enter something in text..");
     }
+    
 }
 const addnode = (text)=>{
     let tmpobj = {
@@ -74,8 +76,8 @@ const addnode = (text)=>{
     }
     appendnode.push(tmpobj);
     addintolocal(appendnode);
-    displaydata(appendnode);
-    updatetotal(appendnode.length)
+    displayData(appendnode);
+    updateTotal(appendnode.length)
 }
 
 const addintolocal = (appendnode)=>{
@@ -99,7 +101,7 @@ checkbox = (e)=>{
     }
     addintolocal(appendnode);
     complete(appendnode);
-    displaydata(appendnode);
+    displayData(appendnode);
 }
 deletenode = (e) =>{
     const id = fetchid(e);
@@ -110,7 +112,7 @@ deletenode = (e) =>{
         }
     }
     addintolocal(appendnode);
-    displaydata(appendnode);
+    displayData(appendnode);
     complete(appendnode);
 }
 
@@ -134,7 +136,7 @@ editnode = (e) =>{
             editedtext.addEventListener('focusout',()=>{
                 appendnode[i].text = editedtext.value;
                 addintolocal(appendnode);
-                displaydata(appendnode);
+                displayData(appendnode);
             })
         }
     }

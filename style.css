@@ -64,6 +64,10 @@ body{
 .addbtn:hover{
     background-color: var(--blue);
 }
+.textcontainer{
+    display: flex;
+    align-items: center;
+}
 .total{
     display: flex;
     justify-content: space-around;
@@ -98,8 +102,20 @@ body{
     justify-content:space-between;
 }
 .checkbox{
+    outline: none;
+    height: 16px;
+    min-width: 16px;
+    border-radius: 50%;
+    appearance: none;
+    border: 1px solid #4EA8DE;
     cursor: pointer;
-    
+    margin: 3px 10px 3px 4px;
+}
+.checkbox:hover{
+    border: 1px solid #1E6F9F;
+}
+.icons{
+    display: flex;
 }
 .fa-trash-alt{
     color: var(--grey-300);
@@ -120,6 +136,18 @@ body{
 .fa-edit:hover{
     color: rgb(25, 194, 25);
     transition: all 0.5s;
+}
+.fa-check{
+    background-color: var(--purple-dark);
+    border-radius: 50%;
+    font-size: 8px;
+    padding: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 3px 10px 3px 4px;
+}
+.fa-check:hover{
+    background-color: var(--purple);
 }
 .hidden{
     display: none;
