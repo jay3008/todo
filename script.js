@@ -10,7 +10,6 @@ let count = fetchdata ? fetchdata.length+1 : 1;
 const updateTotal=(len)=>{
     totaltask.innerHTML = len - 1;
     totaltask1.innerHTML = len - 1;
-    console.log(totaltask1.innerHTML);
 }
 const complete = (appendnode) =>{
     let count = 0;
@@ -30,9 +29,9 @@ let displayData = (data) =>{
     for(let i = data.length-1 ;i>0;i--){
         let todo_list = document.getElementById('todo-list');
         let div1 = `<div class="todo" id="nodeid" data-id=${data[i].id}> <div class="textcontainer">
-            ${data[i].stat ? `<i class="fa fa-check" onclick={checkbox(this)} aria-hidden="true"></i> <span class="line">${data[i].text}</span>` : `<input type="checkbox" name="" id="checkbox" class="checkbox" onclick={checkbox(this)}> <span class="noline">${data[i].text}</span>`}
+            ${data[i].stat ? `<i class="fa fa-check" onclick={checkBox(this)} aria-hidden="true"></i> <span class="line">${data[i].text}</span>` : `<input type="checkBox" name="" id="checkBox" class="checkbox" onclick={checkBox(this)}> <span class="noline">${data[i].text}</span>`}
             </div> <div class="icons">
-            ${data[i].stat ? `<i id="deletenode" class="fas fa-trash-alt" onclick={deletenode(this)}></i>`:`<i id="deletenode" class="fas fa-trash-alt" onclick={deletenode(this)}></i> <i id="editnode" class="fas fa-edit" onclick={editnode(this)}></i>`}
+            ${data[i].stat ? `<i id="deleteNode" class="fas fa-trash-alt" onclick={deleteNode(this)}></i>`:`<i id="deleteNode" class="fas fa-trash-alt" onclick={deleteNode(this)}></i> <i id="editNode" class="fas fa-edit" onclick={editNode(this)}></i>`}
              </div></div>`;
         todo_list.insertAdjacentHTML('beforeend',div1);
     }
@@ -45,7 +44,6 @@ if(fetchdata){
 }
 document.getElementById('text').addEventListener('keydown',(e)=>{
     if(e.key!= ""){
-        console.log(e.key);
         document.getElementById("text").classList.remove('redborder');
     }
     if(e.key == 'Enter'){
@@ -58,7 +56,7 @@ add.addEventListener('click',()=>{
 const checkTxt= () =>{
     text = document.getElementById("text").value.trim();
     if(text!= ""){
-        addnode(text);
+        addNode(text);
         document.getElementById("text").value = "";
     }
     else{
@@ -68,23 +66,23 @@ const checkTxt= () =>{
     }
     
 }
-const addnode = (text)=>{
+const addNode = (text)=>{
     let tmpobj = {
         id : count+=1000,
         stat : 0,
         text : text,
     }
     appendnode.push(tmpobj);
-    addintolocal(appendnode);
+    addIntoLocal(appendnode);
     displayData(appendnode);
     updateTotal(appendnode.length)
 }
 
-const addintolocal = (appendnode)=>{
+const addIntoLocal = (appendnode)=>{
     
     localStorage.setItem("todo",JSON.stringify(appendnode));
 }
-checkbox = (e)=>{
+checkBox = (e)=>{
     const siblingElement = e.nextElementSibling;
     const id = fetchid(e);
     for(let i = 0;i<appendnode.length;i++){
@@ -99,35 +97,30 @@ checkbox = (e)=>{
             }
         }
     }
-    addintolocal(appendnode);
+    addIntoLocal(appendnode);
     complete(appendnode);
     displayData(appendnode);
 }
-deletenode = (e) =>{
+deleteNode = (e) =>{
     const id = fetchid(e);
-    console.log(id);
     for(let i = 0;i<appendnode.length;i++){
         if(appendnode[i].id == Number(id)){
             appendnode.splice(i,1);
         }
     }
-    addintolocal(appendnode);
+    addIntoLocal(appendnode);
     displayData(appendnode);
     complete(appendnode);
 }
 
-editnode = (e) =>{
+editNode = (e) =>{
     const info = e.parentElement.parentElement;
     const id = fetchid(e);
-    console.log(id);
     for(let i = 0;i<appendnode.length;i++){
         if(appendnode[i].id == Number(id)){
             let target = e.parentElement.previousElementSibling; 
-            console.log(target);
             let editdiv = `<div> <input id="edittext" class="text" type="text" value="${appendnode[i].text}"> </div>`;
-            // console.log(editdiv);
             info.insertAdjacentHTML('afterbegin',editdiv);
-            console.log('info...',e.parentElement.previousElementSibling);
             target.remove();
             let editedtext = document.getElementById("edittext");
             editedtext.focus();
@@ -135,7 +128,7 @@ editnode = (e) =>{
             editedtext.setSelectionRange(len,len);
             editedtext.addEventListener('focusout',()=>{
                 appendnode[i].text = editedtext.value;
-                addintolocal(appendnode);
+                addIntoLocal(appendnode);
                 displayData(appendnode);
             })
         }
