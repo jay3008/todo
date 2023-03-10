@@ -55,6 +55,7 @@ document.getElementById('text').addEventListener('keydown',(e)=>{
             document.getElementById("text").value = "";
         }
         else{
+            // document.getElementById("text").value = "hello";
             document.getElementById("text").classList.add('redborder');
             alert("Please enter something in text..");
            
@@ -123,14 +124,16 @@ deletenode = (e) =>{
 editnode = (e) =>{
     const info = e.parentElement.parentElement;
     const id = fetchid(e);
+    let autofocus = true;
     console.log(id);
     for(let i = 0;i<appendnode.length;i++){
         if(appendnode[i].id == Number(id)){
             let target = e.parentElement.previousElementSibling; 
             console.log(target);
-            let editdiv = `<div> <input id="edittext" class="text" type="text" value="${appendnode[i].text}" autofocus> </div>`;
-            console.log(editdiv);
+            let editdiv = `<div> <input id="edittext" class="text" type="text" value="${appendnode[i].text}" ${autofocus ? `autofocus=true` : 'autofocus=true'}> </div>`;
+            // console.log(editdiv);
             info.insertAdjacentHTML('afterbegin',editdiv);
+            console.log('info...',e.parentElement.previousElementSibling);
             target.remove();
             let editedtext = document.getElementById("edittext");
             // editedtext.autofocus;

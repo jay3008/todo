@@ -44,6 +44,7 @@ body{
     border: none;
     box-sizing: border-box;
     border-radius: 10px;
+    width: 600px;
 }
 .redborder{
     border: 0.5px solid red;
@@ -125,4 +126,11 @@ body{
 }
 .line {
     text-decoration: line-through;
+    color: var(--grey-300);
+}
+
+@media (max-width:375px) {
+    .text{
+        width: 250px;
+    }
 }
