@@ -49,20 +49,13 @@ document.getElementById('text').addEventListener('keydown',(e)=>{
         document.getElementById("text").classList.remove('redborder');
     }
     if(e.key == 'Enter'){
-        text = document.getElementById("text").value.trim();
-        if(text!= ""){
-            addnode(text);
-            document.getElementById("text").value = "";
-        }
-        else{
-            // document.getElementById("text").value = "hello";
-            document.getElementById("text").classList.add('redborder');
-            alert("Please enter something in text..");
-           
-        }
+       checktxt();
     }
 })
 add.addEventListener('click',()=>{
+   checktxt();
+})
+const checktxt= () =>{
     text = document.getElementById("text").value.trim();
     if(text!= ""){
         addnode(text);
@@ -72,7 +65,7 @@ add.addEventListener('click',()=>{
         document.getElementById("text").classList.add('redborder');
         alert("Please enter something in text..");
     }
-})
+}
 const addnode = (text)=>{
     let tmpobj = {
         id : count+=1000,
@@ -124,7 +117,6 @@ deletenode = (e) =>{
 editnode = (e) =>{
     const info = e.parentElement.parentElement;
     const id = fetchid(e);
-    let autofocus = true;
     console.log(id);
     for(let i = 0;i<appendnode.length;i++){
         if(appendnode[i].id == Number(id)){
@@ -138,7 +130,7 @@ editnode = (e) =>{
             let editedtext = document.getElementById("edittext");
             editedtext.focus();
             let len = editedtext.value.length;
-            console.log(editedtext.setSelectionRange(len,len));
+            editedtext.setSelectionRange(len,len);
             editedtext.addEventListener('focusout',()=>{
                 appendnode[i].text = editedtext.value;
                 addintolocal(appendnode);
