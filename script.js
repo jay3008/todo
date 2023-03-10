@@ -26,7 +26,7 @@ let displayData = (data) =>{
     while(parent.firstChild){
         parent.removeChild(parent.firstChild);
     }
-    for(let i = data.length-1 ;i>0;i--){
+    for(let i = data.length-1;i>=0;i--){
         let todo_list = document.getElementById('todo-list');
         let div1 = `<div class="todo" id="nodeid" data-id=${data[i].id}> <div class="textcontainer">
             ${data[i].stat ? `<i class="fa fa-check" onclick={checkBox(this)} aria-hidden="true"></i> <span class="line">${data[i].text}</span>` : `<input type="checkBox" name="" id="checkBox" class="checkbox" onclick={checkBox(this)}> <span class="noline">${data[i].text}</span>`}
