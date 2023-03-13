@@ -38,7 +38,7 @@ let displayData = (data) =>{
     for(let i = data.length-1;i>=0;i--){
         let todo_list = document.getElementById('todo-list');
         let div1 = `<div class="todo" id="nodeid" data-id=${data[i].id}> <div class="textcontainer">
-            ${data[i].stat ? `<i class="fa fa-check" onclick={checkBox(this)} aria-hidden="true"></i> <span class="line">${data[i].text}</span>` : `<input type="checkBox" name="" id="checkBox" class="checkbox" onclick={checkBox(this)}> <span class="noline"  id="task-todo">${data[i].text}</span>`}
+            ${data[i].stat ? `<i class="fa fa-check" onclick={checkBox(this)} aria-hidden="true"></i> <div class="line">${data[i].text}</div>` : `<input type="checkBox" name="" id="checkBox" class="checkbox" onclick={checkBox(this)}> <div class="noline"  id="task-todo">${data[i].text}</div>`}
             </div> <div class="icons">
             ${data[i].stat ? `<i id="deleteNode" class="fas fa-trash-alt" onclick={deleteNode(this)}></i>`:`<i id="deleteNode" class="fas fa-trash-alt" onclick={deleteNode(this)}></i> <i id="editNode" class="fas fa-edit" onclick={editNode(this)}></i>`}
              </div></div>`;
@@ -88,7 +88,6 @@ const addNode = (text)=>{
 }
 
 const addIntoLocal = (appendnode)=>{
-    
     localStorage.setItem("todo",JSON.stringify(appendnode));
 }
 checkBox = (e)=>{
@@ -123,13 +122,22 @@ deleteNode = (e) =>{
 }
 
 editNode = (e) =>{
-    const info = e.parentElement.parentElement;
+    // const info = e.parentElement.parentElement;
     const id = fetchid(e);
     for(let i = 0;i<appendnode.length;i++){
         if(appendnode[i].id == Number(id)){
             let target = e.parentElement.previousElementSibling.lastElementChild; 
             target.contentEditable = true;
+            // let sel = window.getSelection();
+            // sel.collapse(target,0);
+            
+            let len = target.innerHTML.length;
+            // target.setSelectionRange(1,6);
+            target.selectionStart = target.selectionEnd = len;
             target.focus();
+            // target.createTextRange();    
+            // target.collapse(true);
+            // target.selectionStart = target.selectionEnd = len;
             target.addEventListener('focusout',()=>{
                 appendnode[i].text = target.innerHTML;
                 addIntoLocal(appendnode);
