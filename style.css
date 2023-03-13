@@ -194,7 +194,10 @@ body{
 .empty-list>P{
     color: var(--grey-300);
 }
-@media (max-width:450px) {
+@media (max-width:650px) {
+    :root{
+        --width : 80%;
+    }
     .text{
         width: 250px;
     }
