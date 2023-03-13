@@ -116,6 +116,7 @@ body{
 }
 .icons{
     display: flex;
+    gap: 10px;
 }
 .fa-trash-alt{
     color: var(--grey-300);
