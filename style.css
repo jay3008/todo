@@ -10,6 +10,7 @@
     --grey-500 : #262626;
     --grey-300 : #808080;
     --danger :#E25858;
+    --width: 51%;
 
 }
 @font-face {
@@ -26,13 +27,15 @@ body{
 .logo{
     background-color: var(--black);
     text-align: center;
-    padding: 40px 0px;
+    padding: 60px 0px;
 }
 .list{
-    margin-top: -25px ;
+    width: var(--width);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: -25px;
 }
 .text{
     resize: none;
@@ -40,26 +43,29 @@ body{
     outline: none;
     color: var(--white-100);
     font-size: 16px;
-    padding: 15px 10px;
+    padding: 16px 16px;
     border: none;
     box-sizing: border-box;
-    border-radius: 10px;
-    width: 600px;
+    border-radius: 8px;
+    width: 95%;
 }
 .redborder{
     border: 0.5px solid red;
     box-shadow: 0px 0px 20px red;
 }
 .addbtn{
-    padding: 15px 25px;
+    padding: 16px 16px;
     font-size: 16px;
     cursor: pointer;
     background-color: var(--blue-dark);
     color: var(--white-100);
     border: none;
     margin-left: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .addbtn:hover{
     background-color: var(--blue);
@@ -67,13 +73,19 @@ body{
 .textcontainer{
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 .total{
+    width: var(--width);
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 65px;
 }
 .todo-list{
     margin-bottom: 50px;
+    margin-top: 25px;
 }
 .task{
     color: #4EA8DE;
@@ -92,14 +104,16 @@ body{
 .todo{
     color: var(--white-100);
     background-color: var(--grey-500);
-    padding: 20px;
+    padding: 16px;
     margin: auto;
-    margin-top: 20px;
-    border-radius: 15px;
-    width: 70%;
+    margin-top: 12px;
+    border-radius: 8px;
+    width: var(--width);
     display: flex;
     align-items: center;
     justify-content:space-between;
+    box-sizing: border-box;
+    gap: 18px;
 }
 .checkbox{
     outline: none;
@@ -156,8 +170,30 @@ body{
 .line {
     text-decoration: line-through;
     color: var(--grey-300);
+    word-break: break-all;
 }
-
+.noline{
+    word-break: break-all;
+    display: inline-block;
+}
+.noline:focus{
+    outline: none;
+    border: 1px solid var(--grey-300);
+    padding: 5px;
+}
+.empty-list{
+    margin: auto;
+    text-align: center;
+    border-top: 1px solid var(--grey-400);
+    width: var(--width);
+    margin-top: 80px;
+}
+.empty-list>img{
+    margin-top: 80px;
+}
+.empty-list>P{
+    color: var(--grey-300);
+}
 @media (max-width:450px) {
     .text{
         width: 250px;
