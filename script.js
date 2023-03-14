@@ -131,6 +131,7 @@ editNode = (e) =>{
         if(appendnode[i].id == Number(id)){
             let target = e.parentElement.previousElementSibling.lastElementChild; 
             target.contentEditable = true;
+            
             var selectedText = window.getSelection();
  
             const selectedRange = document.createRange();
@@ -140,7 +141,9 @@ editNode = (e) =>{
             selectedText.removeAllRanges();
             selectedText.addRange(selectedRange);
             target.addEventListener('focusout',()=>{
-                appendnode[i].text = target.innerHTML;
+                const tmptext = target.innerHTML;
+                console.log(tmptext);
+                appendnode[i].text = tmptext.trim();
                 addIntoLocal(appendnode);
                 displayData(appendnode);
             })

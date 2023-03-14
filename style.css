@@ -207,7 +207,4 @@ body{
     :root{
         --width : 80%;
     }
-    .text{
-        width: 250px;
-    }
 }
