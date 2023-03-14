@@ -144,13 +144,20 @@ body{
     border-radius: 5px;
 }
 .fa-edit{
-    color: #4EA8DE;
+    color: var(--blue-dark);
     cursor: pointer;
     margin-left: 5px;
 }
 .fa-edit:hover{
-    color: rgb(25, 194, 25);
+    color: var(--blue);
     transition: all 0.5s;
+}
+.not-allowed{
+    cursor: not-allowed;
+}
+.not-allowed:hover{
+    cursor: not-allowed;
+    color: var(--blue-dark);
 }
 .fa-check{
     background-color: var(--purple-dark);
@@ -164,6 +171,7 @@ body{
 .fa-check:hover{
     background-color: var(--purple);
 }
+
 .hidden{
     display: none;
 }
