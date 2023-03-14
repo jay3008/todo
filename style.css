@@ -123,6 +123,7 @@ body{
     appearance: none;
     border: 1px solid #4EA8DE;
     cursor: pointer;
+    align-self: flex-start;
     margin: 3px 10px 3px 4px;
 }
 .checkbox:hover{
@@ -131,6 +132,7 @@ body{
 .icons{
     display: flex;
     gap: 10px;
+    align-self: flex-start;
 }
 .fa-trash-alt{
     color: var(--grey-300);
@@ -167,6 +169,7 @@ body{
     cursor: pointer;
     box-sizing: border-box;
     margin: 3px 10px 3px 4px;
+    align-self: flex-start;
 }
 .fa-check:hover{
     background-color: var(--purple);
